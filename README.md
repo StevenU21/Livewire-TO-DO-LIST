@@ -1,7 +1,5 @@
 # Todo List con Livewire 3
 
-![Todo List](https://img.icons8.com/ios-filled/50/000000/todo-list.png)
-
 ## Descripción del Proyecto
 
 Este proyecto es una aplicación de lista de tareas (Todo List) construida con [Livewire 3](https://laravel-livewire.com/), un framework de componentes dinámicos para Laravel. La aplicación permite a los usuarios agregar, editar, marcar como completadas y eliminar tareas de manera interactiva sin necesidad de recargar la página. Utiliza Livewire para manejar la lógica del lado del servidor y actualizar la interfaz de usuario en tiempo real.
