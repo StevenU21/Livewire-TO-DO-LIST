@@ -24,17 +24,16 @@
                 @if($tasks === [])
                     <p class="text-gray-300 font-medium">You have don't have tasks</p>
                 @else
-                <p class="text-gray-300 font-medium">Recently Added Tasks</p>
-                <p class="text-sm text-gray-500">Highlighting new entries.</p>
+                    <p class="text-gray-300 font-medium">Recently Added Tasks</p>
+                    <p class="text-sm text-gray-500">Highlighting new entries.</p>
                 @endif
             </li>
 
             <!-- Listado de tareas -->
             @foreach($tasks as $index => $task)
-                <li
-                    class="flex justify-between items-center p-4 {{ $loop->odd ? 'bg-gray-800 border-l-4 border-green-500' : 'bg-gray-800 border-l-4 border-blue-500' }} rounded-md shadow-sm hover:shadow-lg fade-in"
+                <li class="flex justify-between items-center p-4 {{ $loop->odd ? 'bg-gray-800 border-l-4 border-green-500' : 'bg-gray-800 border-l-4 border-blue-500' }} rounded-md shadow-sm hover:shadow-lg fade-in"
                     id="task-{{ $index }}">
-                    <div class="flex items-center w-full sm:w-auto">
+                    <div class="flex-grow w-full sm:w-auto break-words">
                         @if($editingIndex === $index)
                             <!-- Input de edición -->
                             <input type="text" wire:model="editingText" wire:keydown.enter="updateTask"
@@ -44,10 +43,9 @@
                             @enderror
                         @else
                             <!-- Checkbox y texto de tarea -->
-                            <input type="checkbox" wire:click="toggleTask({{ $index }})" {{ $task['completed'] ? 'checked' : '' }}
-                                class="mr-3 h-5 w-5 text-blue-500 focus:ring-2 focus:ring-blue-400 fade-in">
+                            <input type="checkbox" wire:click="toggleTask({{ $index }})" {{ $task['completed'] ? 'checked' : '' }} class="mr-3 h-5 w-5 text-blue-500 focus:ring-2 focus:ring-blue-400 fade-in">
                             <span wire:click="editTask({{ $index }})"
-                                class="cursor-pointer text-lg {{ $task['completed'] ? 'line-through text-gray-500' : 'text-gray-300' }} hover:text-gray-100 transition-colors fade-in">
+                                class="cursor-pointer text-lg {{ $task['completed'] ? 'line-through text-gray-500' : 'text-gray-300' }} hover:text-gray-100 transition-colors fade-in break-words overflow-hidden text-ellipsis">
                                 {{ $task['text'] }}
                                 <i class="fas fa-pencil-alt ml-3 text-gray-400 hover:text-blue-500"></i>
                             </span>
@@ -70,6 +68,6 @@
         taskElement.classList.add('fade-out');
         setTimeout(() => {
             @this.call('deleteTask', index);
-        }, 100); // Espera a que la animación termine (0.5s)
+        }, 100); // Espera a que la animación termine (0.1s)
     }
 </script>
