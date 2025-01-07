@@ -15,7 +15,7 @@ class TodoList extends Component
     public function validateTask()
     {
         $this->validate([
-            'newTask' => 'required|min:3|max:255',
+            'newTask' => 'required|min:3|max:60',
         ]);
     }
 
@@ -49,7 +49,7 @@ class TodoList extends Component
     public function updateTask()
     {
         $this->validate([
-            'editingText' => 'required|min:3|max:255',
+            'editingText' => 'required|min:3|max:60',
         ]);
 
         if ($this->editingIndex !== null) {
