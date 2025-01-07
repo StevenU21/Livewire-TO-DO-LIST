@@ -27,6 +27,9 @@ Sigue estos pasos para instalar y configurar el proyecto en tu máquina local:
 1. **Clona el repositorio:**
     ```sh
     git https://github.com/StevenU21/Livewire-TO-DO-LIST.git
+    ```
+
+    ```sh
     cd Livewire-TO-DO-LIST
     ```
 
