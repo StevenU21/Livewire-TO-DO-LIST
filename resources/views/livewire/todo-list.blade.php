@@ -11,7 +11,7 @@
         </button>
     </div>
     @error('newTask')
-        <span class="text-red-500 text-sm animate-pulse">{{ $message }}</span>
+        <span class="text-red-500 text-sm">{{ $message }}</span>
     @enderror
 
     <!-- Contenedor para tareas -->
@@ -20,7 +20,7 @@
 
         <ul class="space-y-4">
             <!-- Tareas nuevas -->
-            <li class="p-4 bg-gray-800 border-l-4 border-blue-500 rounded-md shadow animate-fade-in">
+            <li class="p-4 bg-gray-800 border-l-4 border-blue-500 rounded-md shadow">
                 @if($tasks === [])
                     <p class="text-gray-300 font-medium">You have don't have tasks</p>
                 @else
@@ -32,21 +32,22 @@
             <!-- Listado de tareas -->
             @foreach($tasks as $index => $task)
                 <li
-                    class="flex justify-between items-center p-4 {{ $loop->odd ? 'bg-gray-800 border-l-4 border-green-500' : 'bg-gray-800 border-l-4 border-blue-500' }} rounded-md shadow-sm hover:shadow-lg animate-fade-in">
+                    class="flex justify-between items-center p-4 {{ $loop->odd ? 'bg-gray-800 border-l-4 border-green-500' : 'bg-gray-800 border-l-4 border-blue-500' }} rounded-md shadow-sm hover:shadow-lg">
                     <div class="flex items-center w-full sm:w-auto">
                         @if($editingIndex === $index)
                             <!-- Input de edición -->
                             <input type="text" wire:model="editingText" wire:keydown.enter="updateTask"
-                                class="flex-grow px-4 py-2 bg-gray-700 text-gray-200 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 animate-fade-in">
+                                class="flex-grow px-4 py-2 bg-gray-700 text-gray-200 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Edit task">
                             @error('editingText')
-                                <span class="text-red-500 text-sm animate-pulse">{{ $message }}</span>
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
                         @else
                             <!-- Checkbox y texto de tarea -->
                             <input type="checkbox" wire:click="toggleTask({{ $index }})" {{ $task['completed'] ? 'checked' : '' }}
-                                class="mr-3 h-5 w-5 text-blue-500 focus:ring-2 focus:ring-blue-400 animate-fade-in">
+                                class="mr-3 h-5 w-5 text-blue-500 focus:ring-2 focus:ring-blue-400">
                             <span wire:click="editTask({{ $index }})"
-                                class="cursor-pointer text-lg {{ $task['completed'] ? 'line-through text-gray-500' : 'text-gray-300' }} hover:text-gray-100 transition-colors animate-fade-in">
+                                class="cursor-pointer text-lg {{ $task['completed'] ? 'line-through text-gray-500' : 'text-gray-300' }} hover:text-gray-100 transition-colors">
                                 {{ $task['text'] }}
                                 <i class="fas fa-pencil-alt ml-3 text-gray-400 hover:text-blue-500"></i>
                             </span>
@@ -54,7 +55,7 @@
                     </div>
                     <!-- Botón de eliminar -->
                     <button wire:click="deleteTask({{ $index }})"
-                        class="text-red-400 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors animate-fade-out">
+                        class="text-red-400 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors">
                         <i class="fas fa-trash text-xl"></i>
                     </button>
                 </li>
