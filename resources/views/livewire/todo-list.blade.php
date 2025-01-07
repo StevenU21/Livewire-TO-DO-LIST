@@ -21,8 +21,12 @@
         <ul class="space-y-4">
             <!-- Tareas nuevas -->
             <li class="p-4 bg-gray-800 border-l-4 border-blue-500 rounded-md shadow">
+                @if($tasks === [])
+                    <p class="text-gray-300 font-medium">You have don't have tasks</p>
+                @else
                 <p class="text-gray-300 font-medium">Recently Added Tasks</p>
                 <p class="text-sm text-gray-500">Highlighting new entries.</p>
+                @endif
             </li>
 
             <!-- Listado de tareas -->
