@@ -10,6 +10,9 @@
             <span class="hidden sm:inline"> Add Task</span>
         </button>
     </div>
+    @error('newTask')
+        <span class="text-red-500 text-sm">{{ $message }}</span>
+    @enderror
 
     <!-- Contenedor para tareas -->
     <div class="w-full sm:w-3/4 bg-gray-900 rounded-lg shadow-lg p-6">
@@ -32,6 +35,9 @@
                             <input type="text" wire:model="editingText" wire:keydown.enter="updateTask"
                                 class="flex-grow px-4 py-2 bg-gray-700 text-gray-200 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Edit task">
+                            @error('editingText')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         @else
                             <!-- Checkbox y texto de tarea -->
                             <input type="checkbox" wire:click="toggleTask({{ $index }})" {{ $task['completed'] ? 'checked' : '' }}

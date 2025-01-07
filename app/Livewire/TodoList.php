@@ -12,8 +12,17 @@ class TodoList extends Component
     public $editingIndex = null;
     public $editingText = '';
 
+    public function validateTask()
+    {
+        $this->validate([
+            'newTask' => 'required|min:3|max:255',
+        ]);
+    }
+
     public function addTask()
     {
+        $this->validateTask();
+
         if ($this->newTask) {
             $this->tasks[] = ['text' => $this->newTask, 'completed' => false];
             $this->newTask = '';
@@ -39,6 +48,10 @@ class TodoList extends Component
 
     public function updateTask()
     {
+        $this->validate([
+            'editingText' => 'required|min:3|max:255',
+        ]);
+
         if ($this->editingIndex !== null) {
             $this->tasks[$this->editingIndex]['text'] = $this->editingText;
             $this->editingIndex = null;
